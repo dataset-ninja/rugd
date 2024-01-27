@@ -34,7 +34,7 @@ if RELEASE_DATE is None:
 HOMEPAGE_URL: str = "http://rugd.vision/"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = 13171306
+PREVIEW_IMAGE_ID: int = 13176902
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/rugd"

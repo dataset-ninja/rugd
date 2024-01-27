@@ -1,6 +1,8 @@
-from dataset_tools.templates import AnnotationType
-from src.settings import ANNOTATION_TYPES
 from typing import List
+
+from dataset_tools.templates import AnnotationType
+
+from src.settings import ANNOTATION_TYPES
 
 ###############################################################################
 # ! Set up values if you want to change default values of visualizations
@@ -11,7 +13,7 @@ SAMPLE_RATE = 1  # make less if dataset is too big
 # * Preview class to visualize in SUMMARY.md overview section
 # * Literal["ClassesPreview", "HorizontalGrid", "SideAnnotationsGrid", "Poster", "HorizontalGridAnimated", "VerticalGridAnimated"]
 # * If None, then preview_class will be set automatically to "ClassesPreview"
-PREVIEW_CLASS = "Poster"
+PREVIEW_CLASS = "ClassesPreview"
 
 IS_DETECTION_TASK: bool = None  # ? Set True if you want to visualize only bbox annotations
 if IS_DETECTION_TASK is None:
@@ -69,8 +71,8 @@ CLASSES_PREVIEW_TAGS: List[str] = None
 ### * Set up visualization params for ClassesHeatmaps class ###
 # args for "to_image" method
 DRAW_STYLE: str = None  # "inside_white" or "outside_black"
-HEATMAP_ROWS: int = None
-HEATMAP_COLS: int = None
+HEATMAP_ROWS: int = 5
+HEATMAP_COLS: int = 5
 HEATMAP_GRID_SPACING: int = None
 HEATMAP_OUTER_GRID_SPACING: int = None
 HEATMAP_OUTPUT_WIDTH: int = (

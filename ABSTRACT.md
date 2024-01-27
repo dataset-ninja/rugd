@@ -17,7 +17,7 @@ Because existing benchmark datasets for self-driving vehicles are collected from
 
 Robot Unstructured Ground Driving (RUGD) dataset, is composed of a set of video sequences collected from a small unmanned ground robot performing an exploration task in a variety of natural, unstructured environments and semi-urban areas. In addition to the raw frame sequences, RUGD contains dense pixel-wise annotations for every fifth frame in a sequence, providing a total of 7, 453 labeled images for learning and evaluation in this new driving scenario.
 
-<img src="https://github.com/dataset-ninja/rugd/assets/120389559/eb814701-55d4-40e1-8744-e3966ef31aed" alt="image" width="800">
+<img src="https://github.com/dataset-ninja/rugd/assets/120389559/eb814701-55d4-40e1-8744-e3966ef31aed" alt="image" width="1000">
 
 <span style="font-size: smaller; font-style: italic;">Example ground truth annotations provided in the RUGD dataset. Frames from the video sequences are densely annotated with pixel-wise labels from 24 different visual classes.</span>
 
@@ -40,7 +40,7 @@ The robot used to collect the RUGD dataset is based on a Clearpath ‘Husky’ p
 RUGD is a collection of robot exploration video sequences captured as a human teleoperates the robot in the environment. The exploration task is defined such that the human operator maneuvers the robot to mimic autonomous behavior aimed at trying to visually observe different regions of the environment. Given this definition, the sequences depict the robot traversing not only on what may be commonly defined as a road, but also through vegetation, over small obstacles,
 and other terrain present in the area. The average duration of a video sequence is just over 3 minutes. Exploration traversals are performed in areas that represent four general environment categories: ***creek*** - areas near a body of water with some vegetation, ***park*** - woodsy areas with buildings and paved roads, ***trail*** - areas representing non-paved, gravel terrain in woods, ***village*** - areas with buildings and limited paved roads.
 
-<img src="https://github.com/dataset-ninja/rugd/assets/120389559/b43c3160-959d-47d2-aa1b-27fe30e75fa3" alt="image" width="800">
+<img src="https://github.com/dataset-ninja/rugd/assets/120389559/b43c3160-959d-47d2-aa1b-27fe30e75fa3" alt="image" width="1000">
 
 <span style="font-size: smaller; font-style: italic;">Example frames from robot exploration traversal videos from each of the four environment categories.</span>
 
