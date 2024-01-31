@@ -129,7 +129,6 @@ def convert_and_upload_supervisely_project(
         return sly.Annotation(img_size=(img_height, img_wight), labels=labels, img_tags=[subfolder])
 
     color_to_class = {
-        (0, 0, 0): sly.ObjClass("void", sly.Bitmap, color=(0, 0, 0)),
         (108, 64, 20): sly.ObjClass("dirt", sly.Bitmap, color=(108, 64, 20)),
         (255, 229, 204): sly.ObjClass("sand", sly.Bitmap, color=(255, 229, 204)),
         (0, 102, 0): sly.ObjClass("grass", sly.Bitmap, color=(0, 102, 0)),
@@ -168,21 +167,65 @@ def convert_and_upload_supervisely_project(
     )
     api.project.update_meta(project.id, meta.to_json())
 
-    dataset = api.dataset.create(project.id, ds_name, change_name_if_conflict=True)
+    train_images_pathes = []
+    for folder_name in [
+        "park-2",
+        "trail",
+        "trail-3",
+        "trail-4",
+        "trail-6",
+        "trail-9",
+        "trail-10",
+        "trail-11",
+        "trail-12",
+        "trail-14",
+        "trail-15",
+        "village",
+    ]:
+        temp_path = os.path.join(images_path, folder_name)
+        curr_images_pathes = glob.glob(temp_path + "/*.png")
+        train_images_pathes.extend(curr_images_pathes)
 
-    images_pathes = glob.glob(images_path + "/*/*.png")
+    val_images_pathes = []
+    for folder_name in [
+        "park-8",
+        "trail-5",
+    ]:
+        temp_path = os.path.join(images_path, folder_name)
+        curr_images_pathes = glob.glob(temp_path + "/*.png")
+        val_images_pathes.extend(curr_images_pathes)
 
-    progress = sly.Progress("Create dataset {}".format(ds_name), len(images_pathes))
+    test_images_pathes = []
+    for folder_name in [
+        "park-1",
+        "creek",
+        "trail-7",
+        "trail-13",
+    ]:
+        temp_path = os.path.join(images_path, folder_name)
+        curr_images_pathes = glob.glob(temp_path + "/*.png")
+        test_images_pathes.extend(curr_images_pathes)
 
-    for img_pathes_batch in sly.batched(images_pathes, batch_size=batch_size):
-        img_names_batch = [get_file_name_with_ext(im_path) for im_path in img_pathes_batch]
+    ds_name_to_data = {
+        "train": train_images_pathes,
+        "val": val_images_pathes,
+        "test": test_images_pathes,
+    }
 
-        img_infos = api.image.upload_paths(dataset.id, img_names_batch, img_pathes_batch)
-        img_ids = [im_info.id for im_info in img_infos]
+    for ds_name, images_pathes in ds_name_to_data.items():
+        dataset = api.dataset.create(project.id, ds_name, change_name_if_conflict=True)
 
-        anns = [create_ann(image_path) for image_path in img_pathes_batch]
-        api.annotation.upload_anns(img_ids, anns)
+        progress = sly.Progress("Create dataset {}".format(ds_name), len(images_pathes))
 
-        progress.iters_done_report(len(img_names_batch))
+        for img_pathes_batch in sly.batched(images_pathes, batch_size=batch_size):
+            img_names_batch = [get_file_name_with_ext(im_path) for im_path in img_pathes_batch]
+
+            img_infos = api.image.upload_paths(dataset.id, img_names_batch, img_pathes_batch)
+            img_ids = [im_info.id for im_info in img_infos]
+
+            anns = [create_ann(image_path) for image_path in img_pathes_batch]
+            api.annotation.upload_anns(img_ids, anns)
+
+            progress.iters_done_report(len(img_names_batch))
 
     return project

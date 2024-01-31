@@ -20,9 +20,9 @@ HIDE_DATASET = True  # set False when 100% sure about repo quality
 ##################################
 # * After uploading to instance ##
 ##################################
-LICENSE: License = License.Unknown()
-APPLICATIONS: List[Union[Industry, Domain, Research]] = [Industry.Robotics()]
-CATEGORY: Category = Category.Robotics()
+LICENSE: License = License.PubliclyAvailable(source_url="http://rugd.vision/pdfs/RUGD_IROS2019.pdf")
+APPLICATIONS: List[Union[Industry, Domain, Research]] = [Industry.Safety(), Industry.Robotics()]
+CATEGORY: Category = Category.Safety(extra=Category.Robotics())
 
 CV_TASKS: List[CVTask] = [CVTask.SemanticSegmentation()]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.SemanticSegmentation()]
@@ -34,7 +34,7 @@ if RELEASE_DATE is None:
 HOMEPAGE_URL: str = "http://rugd.vision/"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = 13176902
+PREVIEW_IMAGE_ID: int = 13196249
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/rugd"
