@@ -50,6 +50,11 @@ The robot's onboard camera sensor records videos of each traversal at a frame ra
 
 Videos from the RUGD dataset are partitioned into train/val/test splits for our benchmark experimental evaluation. ∼64% of the total annotated frames used for training, ∼10% for validation, and the remaining ∼26% for testing. While the selection of videos for each split was decided to roughly produce specific sizes of each split, two videos were specifically placed in the test split to test realistic challenges faced in many motivating applications. First, the ***creek*** sequence is the only example with significant rock bed terrain. Reserving this as a testing video demonstrates how existing architectures are able to learn from sparse label instances. This is a highly realistic scenario in unstructured environment applications as it is difficult to collect large amounts of training data for all possible terrain a priori. Second, the ***trail*** 7 sequence represents significantly more off-road jitter than others, producing many frames that appear to be quite blurry. This property is also present in training sequences, but again we reserve the difficult video to determine how well the techniques are able to perform under these harsh conditions.
 
-<img src="https://github.com/dataset-ninja/rugd/assets/120389559/63741f19-e7de-412d-a8c5-6ceda752d466" alt="image" width="1000">
+|      | C | P1 | P2 | P8 | T   | T3  | T4  | T5  | T6  | T7  | T9  | T10 | T11 | T12 | T13 | T14 | T15 | V    | Total | %    |
+|------|---|----|----|----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|-------|------|
+| train|   |    | x  |    | x   | x   | x   |     | x   |     | x   | x   | x   | x   |     | x   |  x  | x    | 4759  | 63.83|
+| val  |   |    |    | x  |     |     |     | x   |     |     |     |     |     |     |     |     |     |      |  33   | 9.83 |
+| test | x | x  |    |    |     |     |     |     |     | x   |     |     |     |     | x   |     |     |      | 1964  | 26.34|
+
 
 <span style="font-size: smaller; font-style: italic;">Training, validation and testing splits. VIDEO SEQUENCES (C: CREEK, P: PARK, T: TRAIL, V: VILLAGE) THAT FALL INTO EACH SPLIT ARE DENOTED WITH AN X. THE TOTAL NUMBER OF FRAMES AND PERCENTAGE OF EACH SPLIT WITHIN THE WHOLE DATASET ARE SEEN IN THE LAST TWO COLUMNS.</span>
