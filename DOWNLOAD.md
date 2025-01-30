@@ -1,6 +1,6 @@
 Dataset **RUGD** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://www.dropbox.com/scl/fi/ds9ciqmqup20x91lueivd/rugd-DatasetNinja.tar?rlkey=xsgm7kld5m564fvmpenfnnv1g&dl=1)
+ [Download](https://assets.supervisely.com/remote/eyJsaW5rIjogImZzOi8vYXNzZXRzLzM0MTdfUlVHRC9ydWdkLURhdGFzZXROaW5qYS50YXIiLCAic2lnIjogIkR5YTI2WGpEUHI0VVJjLzNKRWJ6M0t5YkV0ZjF2T2ZENHRnRnQzNVlZejg9In0=)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
